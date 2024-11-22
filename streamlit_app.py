@@ -1,4 +1,4 @@
-# # Importing Important Libraries
+# Importing Important Libraries
 import pickle
 import streamlit as st
 import numpy as np
@@ -27,10 +27,15 @@ col1, col2 = st.columns(2)
 with col1:
     for field, label in list(input_fields.items())[:4]:  # First 4 fields in col1
         user_inputs[field] = st.number_input(label)
-        
+
 with col2:
     for field, label in list(input_fields.items())[4:]:  # Remaining fields in col2
         user_inputs[field] = st.number_input(label)
+
+# Display the user inputs on the frontend
+st.subheader('You have entered the following values:')
+for field, value in user_inputs.items():
+    st.write(f"{field}: {value}")
 
 # Prediction button
 diabetes_diagnosis = ''
